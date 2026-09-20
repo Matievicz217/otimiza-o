@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fluxo: otimizador para jogos no PC</title>
+<meta name="description" content="O Fluxo prepara o Windows para jogar, acompanha o desempenho em tempo real e desfaz tudo quando você fecha o jogo.">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="nav-wrap">
+  <nav class="nav" aria-label="Principal">
+    <a class="marca" href="#topo">
+      <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true">
+        <rect x="1" y="1" width="30" height="30" rx="10" fill="#3b3bff" stroke="#12142b" stroke-width="2"/>
+        <path d="M5 19c3 0 3-7 6-7s3 10 6 10 3-13 6-13 2 10 4 10" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>Fluxo</span>
+    </a>
+    <ul>
+      <li><a href="#como">Como funciona</a></li>
+      <li><a href="#recursos">Recursos</a></li>
+      <li><a href="#perguntas">Perguntas</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <a class="btn btn-mini btn-primario" href="#contato">Quero testar</a>
+  </nav>
+</header>
+
+<main id="topo">
+
+  <!-- Hero -->
+  <section class="hero wrap">
+    <div class="hero-texto">
+      <h1>Chega de travadinha no meio da partida.</h1>
+      <p class="lead">O Fluxo prepara o Windows para jogar, acompanha o desempenho em tempo real e devolve tudo ao normal quando você fecha o jogo.</p>
+      <div class="acoes">
+        <a class="btn btn-primario" href="#contato">Quero testar</a>
+        <a class="btn btn-claro" href="#como">Ver como funciona</a>
+      </div>
+      <p class="hero-nota">Para jogos de PC no Windows 10 e 11.</p>
+    </div>
+
+    <section class="painel-demo" aria-labelledby="demo-titulo">
+      <div class="demo-topo">
+        <h2 id="demo-titulo">Tempo de cada quadro</h2>
+        <span class="estado" id="estado" aria-live="polite">Sem o Fluxo</span>
+      </div>
+
+      <div class="grafico-caixa">
+        <canvas id="grafico" role="img" aria-label="Gráfico do tempo de cada quadro em milissegundos. Sem o Fluxo, aparecem picos altos e frequentes."></canvas>
+      </div>
+
+      <dl class="numeros">
+        <div><dt>FPS médio</dt><dd id="n-fps">--</dd></div>
+        <div><dt>Quedas de FPS</dt><dd id="n-low">--</dd></div>
+        <div><dt>Maior travada</dt><dd id="n-max">--</dd></div>
+      </dl>
+      <p class="numeros-nota">Quedas de FPS: média dos 5% piores quadros.</p>
+
+      <button class="btn btn-chave" id="alternar" type="button" aria-pressed="false">Ligar o Fluxo</button>
+      <p class="demo-nota">Demonstração ilustrativa com dados simulados.</p>
+    </section>
+  </section>
+
+  <!-- Como funciona -->
+  <section id="como" class="secao wrap">
+    <div class="cabeca">
+      <h2>Quatro passos, nenhum deles difícil</h2>
+      <p>Você escolhe o jogo, confere o que vai mudar e joga. Quando fecha, tudo volta ao que era.</p>
+    </div>
+
+    <ol class="como">
+      <li class="passo">
+        <span class="num" aria-hidden="true">1</span>
+        <h3>Escolha o jogo</h3>
+        <p>O Fluxo reconhece os jogos instalados, ou você aponta o executável de qualquer um.</p>
+      </li>
+      <li class="passo">
+        <span class="num" aria-hidden="true">2</span>
+        <h3>Confira o perfil</h3>
+        <p>Veja a lista de ajustes que serão aplicados e desmarque o que não quiser.</p>
+      </li>
+      <li class="passo">
+        <span class="num" aria-hidden="true">3</span>
+        <h3>Jogue</h3>
+        <p>Os ajustes entram quando o jogo abre, e o gráfico mostra o desempenho ao vivo.</p>
+      </li>
+      <li class="passo">
+        <span class="num" aria-hidden="true">4</span>
+        <h3>Feche o jogo</h3>
+        <p>O Windows volta ao normal, e você vê o resultado da sessão.</p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- Recursos -->
+  <section id="recursos" class="secao wrap">
+    <div class="cabeca">
+      <h2>O que o Fluxo faz por você</h2>
+      <p>Poucas funções, todas pensadas para o momento de jogar.</p>
+    </div>
+
+    <div class="bento">
+      <article class="card card-a">
+        <div>
+          <div class="icone"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div>
+          <h3>Prepara o Windows ao abrir o jogo</h3>
+          <p>Fecha os aplicativos que você escolheu, muda o plano de energia e dá prioridade ao jogo. Tudo isso sem você abrir uma configuração do Windows.</p>
+        </div>
+        <ul class="aplicados" aria-label="Exemplo de ajustes aplicados">
+          <li><span>Apps em segundo plano</span><span class="selo">Fechados</span></li>
+          <li><span>Plano de energia</span><span class="selo">Desempenho</span></li>
+          <li><span>Prioridade do jogo</span><span class="selo">Alta</span></li>
+          <li><span>Notificações</span><span class="selo">Silenciadas</span></li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <div class="icone"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18l5-7 4 4 4-9 5 7"/><path d="M3 21h18"/></svg></div>
+        <h3>Gráfico em tempo real</h3>
+        <p>FPS, quedas e temperatura durante a partida, para você ver o que muda.</p>
+      </article>
+
+      <article class="card">
+        <div class="icone"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h8M16 6h4M4 12h2M10 12h10M4 18h10M18 18h2"/><circle cx="14" cy="6" r="2"/><circle cx="8" cy="12" r="2"/><circle cx="16" cy="18" r="2"/></svg></div>
+        <h3>Perfil para cada jogo</h3>
+        <p>Cada jogo guarda o seu conjunto de ajustes, e o Fluxo aplica o certo sozinho.</p>
+      </article>
+
+      <article class="card">
+        <div class="icone"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6l2 2 3-3M4 14l2 2 3-3M12 7h8M12 15h8"/></svg></div>
+        <h3>Limpeza com prévia</h3>
+        <p>Mostra o que vai apagar antes de apagar. Você decide o que sai.</p>
+      </article>
+
+      <article class="card card-menta">
+        <div class="icone"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h10a6 6 0 0 1 0 12h-3"/></svg></div>
+        <h3>Tudo reversível</h3>
+        <p>Cada ajuste pode ser desfeito com um clique, e o Windows volta ao normal ao fechar o jogo.</p>
+      </article>
+
+      <article class="card">
+        <div class="icone"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17a8 8 0 1 1 16 0"/><path d="M12 17l4-5"/></svg></div>
+        <h3>Antes e depois no seu PC</h3>
+        <p>Compara a sessão com e sem o Fluxo, sem promessa de número mágico.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Perguntas -->
+  <section id="perguntas" class="secao wrap">
+    <div class="cabeca">
+      <h2>Perguntas frequentes</h2>
+      <p>Não achou a sua? Escreva na seção de contato.</p>
+    </div>
+
+    <details class="pergunta">
+      <summary>O Fluxo faz overclock?<span class="mais" aria-hidden="true"></span></summary>
+      <p>Não. Ele não mexe na frequência do processador nem da placa de vídeo. Os ajustes são do Windows e do próprio jogo, e todos podem ser desfeitos.</p>
+    </details>
+    <details class="pergunta">
+      <summary>Posso desfazer os ajustes?<span class="mais" aria-hidden="true"></span></summary>
+      <p>Pode. Ao fechar o jogo, o Windows volta ao estado anterior. Se quiser desfazer antes, há um botão para isso.</p>
+    </details>
+    <details class="pergunta">
+      <summary>Funciona com qualquer jogo?<span class="mais" aria-hidden="true"></span></summary>
+      <p>Com jogos de PC no Windows 10 e 11. O ganho depende do jogo e do seu hardware, e o Fluxo mostra quanto rendeu no seu computador.</p>
+    </details>
+    <details class="pergunta">
+      <summary>Preciso deixar o Fluxo aberto?<span class="mais" aria-hidden="true"></span></summary>
+      <p>Só enquanto você joga. Ele fica quieto na bandeja do sistema e entra em ação quando o jogo abre.</p>
+    </details>
+    <details class="pergunta">
+      <summary>Quanto custa?<span class="mais" aria-hidden="true"></span></summary>
+      <p>Fale com a gente pelo formulário abaixo para saber como conseguir acesso.</p>
+    </details>
+  </section>
+
+  <!-- Contato -->
+  <!-- TROQUE: o e-mail em data-email (formulário) e no link abaixo, e o número do WhatsApp. -->
+  <section id="contato" class="secao wrap">
+    <div class="contato">
+      <div class="contato-texto">
+        <h2>Fale com a gente</h2>
+        <p>Quer testar o Fluxo, tirar uma dúvida ou propor uma parceria? Mande uma mensagem por aqui ou por um dos canais.</p>
+
+        <ul class="canais">
+          <li>
+            <a class="canal" href="mailto:contato@seudominio.com">
+              <span class="canal-icone"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 8 8 6 8-6"/></svg></span>
+              <span><b>E-mail</b><small>contato@seudominio.com</small></span>
+            </a>
+          </li>
+          <li>
+            <a class="canal" href="https://wa.me/5500000000000" target="_blank" rel="noopener">
+              <span class="canal-icone"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.4-4.2A8 8 0 1 1 8.4 18.7z"/></svg></span>
+              <span><b>WhatsApp</b><small>(00) 00000-0000</small></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <form class="form" id="form-contato" data-email="contato@seudominio.com" novalidate>
+        <div class="campo">
+          <label for="nome">Nome</label>
+          <input id="nome" name="nome" type="text" autocomplete="name" required>
+          <p class="erro" id="erro-nome" hidden></p>
+        </div>
+
+        <div class="campo">
+          <label for="email">E-mail</label>
+          <input id="email" name="email" type="email" autocomplete="email" required>
+          <p class="erro" id="erro-email" hidden></p>
+        </div>
+
+        <div class="campo">
+          <label for="assunto">Assunto</label>
+          <select id="assunto" name="assunto">
+            <option>Quero testar o Fluxo</option>
+            <option>Dúvida</option>
+            <option>Suporte</option>
+            <option>Parceria</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="mensagem">Mensagem</label>
+          <textarea id="mensagem" name="mensagem" rows="5" maxlength="1000" required></textarea>
+          <p class="erro" id="erro-mensagem" hidden></p>
+        </div>
+
+        <button class="btn btn-primario btn-enviar" type="submit">Enviar mensagem</button>
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="rodape wrap">
+  <p>© <span id="ano">2026</span> Fluxo. Todos os direitos reservados.</p>
+  <p><a href="#topo">Voltar ao topo</a></p>
+</footer>
+
+<script src="js/grafico.js" defer></script>
+<script src="js/app.js" defer></script>
+</body>
+</html>
