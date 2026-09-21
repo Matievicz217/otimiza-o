@@ -917,6 +917,7 @@ body::selection{
 
   font-family:var(--font-display);
   font-weight:700;
+  color: white;
 
   font-size:clamp(1.6rem,3.4vw,2.35rem);
   line-height:1.12;
