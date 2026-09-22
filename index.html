@@ -1,254 +1,319 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fluxo: otimizador para jogos no PC</title>
-<meta name="description" content="O Fluxo prepara o Windows para jogar, acompanha o desempenho em tempo real e desfaz tudo quando você fecha o jogo.">
-<meta name="color-scheme" content="light">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Battle Teams 1 Pro — Otimização e Performance</title>
+  <meta name="description"
+    content="Battle Teams 1 Pro: otimização de desempenho para Battle Teams 1, com foco em estabilidade, fluidez e resposta do sistema.">
+  <meta name="color-scheme" content="light">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <header class="nav-wrap">
   <nav class="nav" aria-label="Principal">
-    <a class="marca" href="#topo">
-      <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true">
-        <rect x="1" y="1" width="30" height="30" rx="10" fill="#3b3bff" stroke="#12142b" stroke-width="2"/>
-        <path d="M5 19c3 0 3-7 6-7s3 10 6 10 3-13 6-13 2 10 4 10" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <span>Fluxo</span>
+
+    <a class="marca" href="#inicio">
+      <img src="img/speed_4_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="Battle Teams 1 Pro">
+      <span>BATTLE TEAMS 1 PRO</span>
     </a>
+
     <ul>
       <li><a href="#como">Como funciona</a></li>
-      <li><a href="#recursos">Recursos</a></li>
+      <li><a href="#seguranca">Segurança</a></li>
       <li><a href="#perguntas">Perguntas</a></li>
       <li><a href="#contato">Contato</a></li>
     </ul>
-    <a class="btn btn-mini btn-primario" href="#contato">Quero testar</a>
+
+    <a class="btn btn-mini btn-primario" href="#contato">
+      Quero testar
+    </a>
+
   </nav>
 </header>
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-copy">
+        <p class="eyebrow">BATTLE TEAMS 1 PRO</p>
+        <h1>O ápice da otimização e performance definitiva para games</h1>
+        <p class="lead">
+          O Battle Teams 1 Pro é um software de engenharia de ponta, meticulosamente desenvolvido
+          para elevar a estabilidade ao patamar máximo, reduzir a latência e desbloquear todo o
+          potencial de quadros por segundo (FPS) em jogos de tiro competitivo — com foco absoluto
+          na engine do Battle Teams 1.
+        </p>
+        <p>
+          Nossa missão é reduzir travamentos (stutter), micro-engasgos e atrasos de resposta,
+          proporcionando uma experiência de jogo mais fluida, imersiva e responsiva.
+        </p>
 
-<main id="topo">
-
-  <!-- Hero -->
-  <section class="hero wrap">
-    <div class="hero-texto">
-      <h1>Chega de travadinha no meio da partida.</h1>
-      <p class="lead">O Fluxo prepara o Windows para jogar, acompanha o desempenho em tempo real e devolve tudo ao normal quando você fecha o jogo.</p>
-      <div class="acoes">
-        <a class="btn btn-primario" href="#contato">Quero testar</a>
-        <a class="btn btn-claro" href="#como">Ver como funciona</a>
-      </div>
-      <p class="hero-nota">Para jogos de PC no Windows 10 e 11.</p>
-    </div>
-
-    <section class="painel-demo" aria-labelledby="demo-titulo">
-      <div class="demo-topo">
-        <h2 id="demo-titulo">Tempo de cada quadro</h2>
-        <span class="estado" id="estado" aria-live="polite">Sem o Fluxo</span>
-      </div>
-
-      <div class="grafico-caixa">
-        <canvas id="grafico" role="img" aria-label="Gráfico do tempo de cada quadro em milissegundos. Sem o Fluxo, aparecem picos altos e frequentes."></canvas>
+        <div class="hero-actions">
+          <a class="btn primary" href="#recursos">Conhecer recursos</a>
+          <a class="btn ghost" href="#como">Como funciona</a>
+        </div>
       </div>
 
-      <dl class="numeros">
-        <div><dt>FPS médio</dt><dd id="n-fps">--</dd></div>
-        <div><dt>Quedas de FPS</dt><dd id="n-low">--</dd></div>
-        <div><dt>Maior travada</dt><dd id="n-max">--</dd></div>
-      </dl>
-      <p class="numeros-nota">Quedas de FPS: média dos 5% piores quadros.</p>
-
-      <button class="btn btn-chave" id="alternar" type="button" aria-pressed="false">Ligar o Fluxo</button>
-      <p class="demo-nota">Demonstração ilustrativa com dados simulados.</p>
+      <div class="demo" aria-label="Demonstração de desempenho">
+        <div class="demo-head">
+          <span>Monitoramento de performance</span>
+          <span class="status">OTIMIZAÇÃO ATIVA</span>
+        </div>
+        <div class="graph-wrap">
+          <canvas id="grafico"></canvas>
+        </div>
+        <div class="metrics">
+          <div><small>FPS</small><strong id="n-fps">--</strong></div>
+          <div><small>1% LOW</small><strong id="n-low">--</strong></div>
+          <div><small>MAX</small><strong id="n-max">--</strong></div>
+        </div>
+        <button id="alternar" class="btn primary" type="button">Alternar demonstração</button>
+      </div>
     </section>
-  </section>
 
-  <!-- Como funciona -->
-  <section id="como" class="secao wrap">
-    <div class="cabeca">
-      <h2>Quatro passos, nenhum deles difícil</h2>
-      <p>Você escolhe o jogo, confere o que vai mudar e joga. Quando fecha, tudo volta ao que era.</p>
-    </div>
-
-    <ol class="como">
-      <li class="passo">
-        <span class="num" aria-hidden="true">1</span>
-        <h3>Escolha o jogo</h3>
-        <p>O Fluxo reconhece os jogos instalados, ou você aponta o executável de qualquer um.</p>
-      </li>
-      <li class="passo">
-        <span class="num" aria-hidden="true">2</span>
-        <h3>Confira o perfil</h3>
-        <p>Veja a lista de ajustes que serão aplicados e desmarque o que não quiser.</p>
-      </li>
-      <li class="passo">
-        <span class="num" aria-hidden="true">3</span>
-        <h3>Jogue</h3>
-        <p>Os ajustes entram quando o jogo abre, e o gráfico mostra o desempenho ao vivo.</p>
-      </li>
-      <li class="passo">
-        <span class="num" aria-hidden="true">4</span>
-        <h3>Feche o jogo</h3>
-        <p>O Windows volta ao normal, e você vê o resultado da sessão.</p>
-      </li>
-    </ol>
-  </section>
-
-  <!-- Recursos -->
-  <section id="recursos" class="secao wrap">
-    <div class="cabeca">
-      <h2>O que o Fluxo faz por você</h2>
-      <p>Poucas funções, todas pensadas para o momento de jogar.</p>
-    </div>
-
-    <div class="bento">
-      <article class="card card-a">
-        <div>
-          <div class="icone"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div>
-          <h3>Prepara o Windows ao abrir o jogo</h3>
-          <p>Fecha os aplicativos que você escolheu, muda o plano de energia e dá prioridade ao jogo. Tudo isso sem você abrir uma configuração do Windows.</p>
-        </div>
-        <ul class="aplicados" aria-label="Exemplo de ajustes aplicados">
-          <li><span>Apps em segundo plano</span><span class="selo">Fechados</span></li>
-          <li><span>Plano de energia</span><span class="selo">Desempenho</span></li>
-          <li><span>Prioridade do jogo</span><span class="selo">Alta</span></li>
-          <li><span>Notificações</span><span class="selo">Silenciadas</span></li>
-        </ul>
-      </article>
-
-      <article class="card">
-        <div class="icone"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18l5-7 4 4 4-9 5 7"/><path d="M3 21h18"/></svg></div>
-        <h3>Gráfico em tempo real</h3>
-        <p>FPS, quedas e temperatura durante a partida, para você ver o que muda.</p>
-      </article>
-
-      <article class="card">
-        <div class="icone"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h8M16 6h4M4 12h2M10 12h10M4 18h10M18 18h2"/><circle cx="14" cy="6" r="2"/><circle cx="8" cy="12" r="2"/><circle cx="16" cy="18" r="2"/></svg></div>
-        <h3>Perfil para cada jogo</h3>
-        <p>Cada jogo guarda o seu conjunto de ajustes, e o Fluxo aplica o certo sozinho.</p>
-      </article>
-
-      <article class="card">
-        <div class="icone"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6l2 2 3-3M4 14l2 2 3-3M12 7h8M12 15h8"/></svg></div>
-        <h3>Limpeza com prévia</h3>
-        <p>Mostra o que vai apagar antes de apagar. Você decide o que sai.</p>
-      </article>
-
-      <article class="card card-menta">
-        <div class="icone"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h10a6 6 0 0 1 0 12h-3"/></svg></div>
-        <h3>Tudo reversível</h3>
-        <p>Cada ajuste pode ser desfeito com um clique, e o Windows volta ao normal ao fechar o jogo.</p>
-      </article>
-
-      <article class="card">
-        <div class="icone"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17a8 8 0 1 1 16 0"/><path d="M12 17l4-5"/></svg></div>
-        <h3>Antes e depois no seu PC</h3>
-        <p>Compara a sessão com e sem o Fluxo, sem promessa de número mágico.</p>
-      </article>
-    </div>
-  </section>
-
-  <!-- Perguntas -->
-  <section id="perguntas" class="secao wrap">
-    <div class="cabeca">
-      <h2>Perguntas frequentes</h2>
-      <p>Não achou a sua? Escreva na seção de contato.</p>
-    </div>
-
-    <details class="pergunta">
-      <summary>O Fluxo faz overclock?<span class="mais" aria-hidden="true"></span></summary>
-      <p>Não. Ele não mexe na frequência do processador nem da placa de vídeo. Os ajustes são do Windows e do próprio jogo, e todos podem ser desfeitos.</p>
-    </details>
-    <details class="pergunta">
-      <summary>Posso desfazer os ajustes?<span class="mais" aria-hidden="true"></span></summary>
-      <p>Pode. Ao fechar o jogo, o Windows volta ao estado anterior. Se quiser desfazer antes, há um botão para isso.</p>
-    </details>
-    <details class="pergunta">
-      <summary>Funciona com qualquer jogo?<span class="mais" aria-hidden="true"></span></summary>
-      <p>Com jogos de PC no Windows 10 e 11. O ganho depende do jogo e do seu hardware, e o Fluxo mostra quanto rendeu no seu computador.</p>
-    </details>
-    <details class="pergunta">
-      <summary>Preciso deixar o Fluxo aberto?<span class="mais" aria-hidden="true"></span></summary>
-      <p>Só enquanto você joga. Ele fica quieto na bandeja do sistema e entra em ação quando o jogo abre.</p>
-    </details>
-    <details class="pergunta">
-      <summary>Quanto custa?<span class="mais" aria-hidden="true"></span></summary>
-      <p>Fale com a gente pelo formulário abaixo para saber como conseguir acesso.</p>
-    </details>
-  </section>
-
-  <!-- Contato -->
-  <!-- TROQUE: o e-mail em data-email (formulário) e no link abaixo, e o número do WhatsApp. -->
-  <section id="contato" class="secao wrap">
-    <div class="contato">
-      <div class="contato-texto">
-        <h2>Fale com a gente</h2>
-        <p>Quer testar o Fluxo, tirar uma dúvida ou propor uma parceria? Mande uma mensagem por aqui ou por um dos canais.</p>
-
-        <ul class="canais">
-          <li>
-            <a class="canal" href="mailto:contato@seudominio.com">
-              <span class="canal-icone"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 8 8 6 8-6"/></svg></span>
-              <span><b>E-mail</b><small>contato@seudominio.com</small></span>
-            </a>
-          </li>
-          <li>
-            <a class="canal" href="https://wa.me/5500000000000" target="_blank" rel="noopener">
-              <span class="canal-icone"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.4-4.2A8 8 0 1 1 8.4 18.7z"/></svg></span>
-              <span><b>WhatsApp</b><small>(00) 00000-0000</small></span>
-            </a>
-          </li>
-        </ul>
+    <section id="como" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">COMO FUNCIONA</p>
+        <h2>Performance inteligente, sem complicação.</h2>
+        <p>
+          O Battle Teams 1 Pro trabalha de forma externa ao jogo, utilizando recursos do próprio
+          sistema operacional para organizar e otimizar o ambiente de execução.
+        </p>
       </div>
 
-      <form class="form" id="form-contato" data-email="contato@seudominio.com" novalidate>
-        <div class="campo">
-          <label for="nome">Nome</label>
-          <input id="nome" name="nome" type="text" autocomplete="name" required>
-          <p class="erro" id="erro-nome" hidden></p>
+      <div class="cards">
+        <article class="card">
+          <span class="number">01</span>
+          <h3>Análise</h3>
+          <p>Identifica pontos do sistema que podem impactar estabilidade, resposta e desempenho.</p>
+        </article>
+
+        <article class="card">
+          <span class="number">02</span>
+          <h3>Otimização</h3>
+          <p>Aplica ajustes de sistema e gerenciamento de recursos de forma organizada.</p>
+        </article>
+
+        <article class="card">
+          <span class="number">03</span>
+          <h3>Monitoramento</h3>
+          <p>Acompanha métricas de desempenho para facilitar a percepção das mudanças.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="recursos" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">🚀 O QUE O SOFTWARE FAZ POR VOCÊ?</p>
+        <h2>Desempenho pensado para quem joga no limite.</h2>
+      </div>
+
+      <div class="feature-list">
+        <article class="feature">
+          <span class="feature-icon">01</span>
+          <div>
+            <h3>Fluidez absoluta em momentos críticos</h3>
+            <p>
+              Diga adeus às quedas abruptas de FPS. Seu jogo rodará com extrema suavidade,
+              mesmo nos cenários mais caóticos e intensos de troca de tiros.
+            </p>
+          </div>
+        </article>
+
+        <article class="feature">
+          <span class="feature-icon">02</span>
+          <div>
+            <h3>Reflexos instantâneos</h3>
+            <p>
+              Sinta seus comandos ganharem vida instantaneamente na tela, reduzindo a distância
+              entre a sua intenção e a ação do seu personagem.
+            </p>
+          </div>
+        </article>
+
+        <article class="feature">
+          <span class="feature-icon">03</span>
+          <div>
+            <h3>Desempenho inteligente e invisível</h3>
+            <p>
+              Deixe o trabalho pesado com o software. Ele gerencia e otimiza recursos do sistema
+              em segundo plano, sem exigir que você altere manualmente uma série de configurações
+              complexas do Windows.
+            </p>
+          </div>
+        </article>
+
+        <article class="feature">
+          <span class="feature-icon">04</span>
+          <div>
+            <h3>Domínio total de movimentação</h3>
+            <p>
+              Eleve suas mecânicas com o exclusivo Bhop do Kross integrado, projetado para otimizar
+              saltos contínuos e precisos diretamente no botão lateral do seu mouse.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section security">
+      <div class="section-heading">
+        <p class="eyebrow">🛡️ ENGENHARIA EXCLUSIVA</p>
+        <h2>Segurança e Anti-Cheat sem Riscos</h2>
+        <p>
+          Uma das maiores preocupações de qualquer competidor é a integridade da sua conta.
+          O Battle Teams 1 Pro foi projetado para atuar externamente ao jogo e manter o foco
+          na otimização do sistema.
+        </p>
+      </div>
+
+      <div class="security-box">
+        <h3>🔒 Por que o nosso método é projetado para ser seguro?</h3>
+
+        <div class="security-item">
+          <h4>Zero Injeção de Código (External Architecture)</h4>
+          <p>
+            Diferente de cheats tradicionais e softwares maliciosos, o nosso otimizador não tem
+            como objetivo injetar arquivos, DLLs ou código na memória ou nos processos principais
+            do jogo. Ele atua de forma externa no sistema operacional e utiliza recursos nativos
+            do Windows.
+          </p>
         </div>
 
-        <div class="campo">
-          <label for="email">E-mail</label>
-          <input id="email" name="email" type="email" autocomplete="email" required>
-          <p class="erro" id="erro-email" hidden></p>
+        <div class="security-item">
+          <h4>Respeito aos Limites do Servidor</h4>
+          <p>
+            Não altera arquivos fundamentais do jogo nem busca burlar regras de rede. O foco é
+            puramente a otimização de hardware, priorização de threads e limpeza inteligente de
+            cache, mantendo a integridade do cliente do jogo.
+          </p>
         </div>
 
-        <div class="campo">
-          <label for="assunto">Assunto</label>
-          <select id="assunto" name="assunto">
-            <option>Quero testar o Fluxo</option>
-            <option>Dúvida</option>
-            <option>Suporte</option>
-            <option>Parceria</option>
-          </select>
+        <div class="security-item">
+          <h4>Foco em Performance Limpa</h4>
+          <p>
+            Ao invés de modificar a estrutura interna do jogo, o software busca maximizar o
+            potencial que o seu próprio computador já possui — refinando a utilização do
+            processador, da memória RAM e dos periféricos de forma legítima.
+          </p>
         </div>
+      </div>
 
-        <div class="campo">
-          <label for="mensagem">Mensagem</label>
-          <textarea id="mensagem" name="mensagem" rows="5" maxlength="1000" required></textarea>
-          <p class="erro" id="erro-mensagem" hidden></p>
+      <div class="security-summary">
+        <strong>💡 Resumo</strong>
+        <p>
+          Mais velocidade, menos preocupação. Toda a performance que sua máquina é capaz de
+          entregar, com uma abordagem externa e transparente.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="diferenciais">
+      <div class="section-heading">
+        <p class="eyebrow">POR QUE USAR?</p>
+        <h2>Mais controle sobre a sua experiência.</h2>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <h3>Preparação do Windows</h3>
+          <p>Organize o ambiente do sistema antes de iniciar sua sessão de jogo.</p>
+        </article>
+
+        <article class="card">
+          <h3>Perfis por jogo</h3>
+          <p>Configure comportamentos específicos para diferentes títulos e cenários.</p>
+        </article>
+
+        <article class="card">
+          <h3>Ajustes reversíveis</h3>
+          <p>Tenha mais controle sobre as alterações realizadas e facilite a restauração.</p>
+        </article>
+
+        <article class="card">
+          <h3>Antes e depois</h3>
+          <p>Compare métricas e acompanhe o comportamento do sistema antes e depois da otimização.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="perguntas" class="section faq">
+      <div class="section-heading">
+        <p class="eyebrow">FAQ</p>
+        <h2>Perguntas frequentes</h2>
+      </div>
+
+      <details>
+        <summary>O Battle Teams 1 Pro faz overclock?</summary>
+        <p>
+          Não. O foco do software é otimizar o ambiente do sistema e o gerenciamento de recursos,
+          sem exigir overclock do hardware.
+        </p>
+      </details>
+
+      <details>
+        <summary>Posso desfazer as alterações?</summary>
+        <p>
+          Sim. A proposta é trabalhar com ajustes organizados e reversíveis sempre que possível.
+        </p>
+      </details>
+
+      <details>
+        <summary>Funciona em qualquer jogo?</summary>
+        <p>
+          Os recursos podem variar conforme o jogo e o sistema. O foco principal desta versão é
+          o ambiente competitivo e a experiência do Battle Teams 1.
+        </p>
+      </details>
+
+      <details>
+        <summary>Preciso deixar o software aberto?</summary>
+        <p>
+          Depende do recurso utilizado. Algumas otimizações podem ser aplicadas antes da partida,
+          enquanto recursos de monitoramento dependem do aplicativo permanecer aberto.
+        </p>
+      </details>
+
+      <details>
+        <summary>O software é gratuito?</summary>
+        <p>
+          Consulte as condições comerciais e os planos disponíveis no canal oficial de contato.
+        </p>
+      </details>
+    </section>
+
+    <section id="contato" class="section contact">
+      <div class="contact-box">
+        <p class="eyebrow">CONTATO</p>
+        <h2>Pronto para levar seu setup ao próximo nível?</h2>
+        <p>
+          Entre em contato para conhecer o Battle Teams 1 Pro e saber mais sobre a solução.
+        </p>
+
+        <div class="contact-actions">
+          <a class="btn ghost" href="https://wa.me/5500000000000" target="_blank" rel="noopener">
+            WhatsApp
+          </a>
         </div>
+      </div>
+    </section>
+  </main>
 
-        <button class="btn btn-primario btn-enviar" type="submit">Enviar mensagem</button>
-        <p class="status" id="status" role="status" aria-live="polite"></p>
-      </form>
-    </div>
-  </section>
-
-</main>
-
-<footer class="rodape wrap">
-  <p>© <span id="ano">2026</span> Fluxo. Todos os direitos reservados.</p>
-  <p><a href="#topo">Voltar ao topo</a></p>
-</footer>
-
-<script src="grafico.js" defer></script>
-<script src="app.js" defer></script>
+  <footer class="rodape wrap">
+    <p>© <span id="ano">2026</span> Battle Teams 1 Pro. Todos os direitos reservados.</p>
+    <p><a href="#topo">Voltar ao topo</a></p>
+  </footer>
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="reveal.js" defer></script>
+  <script src="grafico.js" defer></script>
+  <script src="app.js" defer></script>
 </body>
+
 </html>
