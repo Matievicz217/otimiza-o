@@ -58,6 +58,9 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 100px;
+
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -81,6 +84,20 @@ body {
   line-height: 1.6;
 
   -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* botão sem estilos nativos de <button>, usado no menu mobile */
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
 }
 
 /* =========================================================
@@ -299,9 +316,12 @@ a {
   z-index: 100;
 
   padding: 14px 0;
+  padding-top: max(14px, env(safe-area-inset-top));
 }
 
 .nav {
+  position: relative;
+
   width: min(1180px, calc(100% - 32px));
 
   margin: auto;
@@ -350,8 +370,22 @@ a {
   letter-spacing: -0.03em;
 }
 
+.marca img,
 .marca svg {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+
   filter: drop-shadow(0 0 12px rgba(255, 30, 50, 0.45));
+
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.marca:hover img,
+.marca:hover svg {
+  transform: scale(1.1) rotate(-6deg);
+
+  filter: drop-shadow(0 0 18px rgba(255, 60, 60, 0.75));
 }
 
 .nav ul {
@@ -369,6 +403,8 @@ a {
 }
 
 .nav ul a {
+  position: relative;
+
   display: block;
 
   padding: 9px 13px;
@@ -389,6 +425,25 @@ a {
     transform 0.2s ease;
 }
 
+.nav ul a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 13px;
+  right: 13px;
+  bottom: 5px;
+
+  height: 1px;
+
+  background: #ff5040;
+
+  transform: scaleX(0);
+  transform-origin: left;
+
+  transition: transform 0.25s ease;
+}
+
 .nav ul a:hover {
   color: white;
 
@@ -397,11 +452,102 @@ a {
   transform: translateY(-1px);
 }
 
+.nav ul a:hover::after {
+  transform: scaleX(1);
+}
+
+/* ---------------------------------------------------------
+   Menu mobile (hamburger) — escondido no desktop,
+   assume o lugar da lista de links abaixo de 1000px
+--------------------------------------------------------- */
+
+.menu-toggle {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.menu-btn {
+  display: none;
+
+  flex-shrink: 0;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+  margin-left: auto;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.035);
+
+  cursor: pointer;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+.menu-btn span {
+  position: relative;
+
+  display: block;
+
+  width: 17px;
+  height: 2px;
+
+  background: var(--text);
+  border-radius: 2px;
+
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.menu-btn span::before,
+.menu-btn span::after {
+  content: "";
+
+  position: absolute;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background: var(--text);
+  border-radius: 2px;
+
+  transition: transform 0.25s ease, top 0.25s ease, opacity 0.25s ease;
+}
+
+.menu-btn span::before {
+  top: -6px;
+}
+
+.menu-btn span::after {
+  top: 6px;
+}
+
+.menu-toggle:checked + .menu-btn span {
+  background: transparent;
+}
+
+.menu-toggle:checked + .menu-btn span::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.menu-toggle:checked + .menu-btn span::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
 /* =========================================================
    BOTÕES
    ========================================================= */
 
 .btn {
+  position: relative;
+
   display: inline-flex;
 
   align-items: center;
@@ -431,11 +577,38 @@ a {
 
   cursor: pointer;
 
+  overflow: hidden;
+
   transition:
     transform 0.22s ease,
     box-shadow 0.22s ease,
     border-color 0.22s ease,
     background 0.22s ease;
+}
+
+.btn::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.22) 48%,
+    transparent 66%
+  );
+
+  transform: translateX(-120%);
+
+  pointer-events: none;
+}
+
+.btn:hover::before {
+  transform: translateX(120%);
+
+  transition: transform 0.65s ease;
 }
 
 .btn:hover {
@@ -482,6 +655,8 @@ a {
   padding: 8px 17px;
 
   font-size: 0.86rem;
+
+  white-space: nowrap;
 }
 
 /* =========================================================
@@ -494,6 +669,7 @@ a {
   margin: auto;
 
   min-height: calc(100vh - 90px);
+  min-height: calc(100svh - 90px);
 
   display: grid;
 
@@ -510,6 +686,8 @@ a {
 
 .hero-copy {
   position: relative;
+
+  min-width: 0;
 }
 
 .eyebrow {
@@ -543,6 +721,14 @@ a {
   background: #ff263f;
 
   box-shadow: 0 0 12px rgba(255, 30, 50, 0.85);
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-copy:hover .eyebrow::before {
+  transform: scale(1.4);
+
+  box-shadow: 0 0 18px rgba(255, 40, 60, 1);
 }
 
 .hero h1 {
@@ -559,6 +745,8 @@ a {
   line-height: 1.05;
 
   letter-spacing: -0.055em;
+
+  overflow-wrap: break-word;
 
   background: linear-gradient(135deg, #ffffff 15%, #ffb3a0 48%, #ff3855 90%);
 
@@ -602,6 +790,8 @@ a {
 .demo {
   position: relative;
 
+  min-width: 0;
+
   padding: 22px;
 
   border: 1px solid rgba(255, 255, 255, 0.09);
@@ -622,6 +812,19 @@ a {
   -webkit-backdrop-filter: blur(18px);
 
   overflow: hidden;
+
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.demo:hover {
+  transform: translateY(-4px);
+
+  border-color: rgba(255, 60, 70, 0.22);
+
+  box-shadow:
+    0 40px 100px rgba(0, 0, 0, 0.7),
+    0 0 45px rgba(255, 30, 40, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 .demo::before {
@@ -677,7 +880,21 @@ a {
 
   font-size: 0.68rem;
 
+  white-space: nowrap;
+
   box-shadow: 0 0 18px rgba(255, 50, 30, 0.07);
+
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.status.estado-on {
+  color: #8bffb0;
+
+  background: rgba(30, 255, 130, 0.08);
+
+  border-color: rgba(60, 255, 150, 0.22);
+
+  box-shadow: 0 0 18px rgba(40, 255, 140, 0.1);
 }
 
 .graph-wrap {
@@ -719,6 +936,8 @@ a {
 }
 
 .metrics > div {
+  min-width: 0;
+
   padding: 14px;
 
   border: 1px solid rgba(255, 255, 255, 0.06);
@@ -726,6 +945,20 @@ a {
   border-radius: var(--radius-md);
 
   background: rgba(255, 255, 255, 0.025);
+
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.metrics > div:hover {
+  transform: translateY(-3px);
+
+  border-color: rgba(255, 90, 70, 0.28);
+
+  background: rgba(255, 60, 40, 0.05);
+}
+
+.metrics > div:hover strong {
+  color: #ff9a83;
 }
 
 .metrics small {
@@ -743,11 +976,19 @@ a {
 }
 
 .metrics strong {
+  display: block;
+
   color: #ff745d;
 
   font-family: var(--mono);
 
   font-size: 1.45rem;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  transition: color 0.25s ease;
 }
 
 .demo > .btn {
@@ -762,7 +1003,7 @@ a {
 
 .section {
   width: min(1180px, calc(100% - 32px));
-
+  cursor: pointer;
   margin: auto;
 
   padding: 105px 0;
@@ -788,6 +1029,8 @@ a {
   line-height: 1.12;
 
   letter-spacing: -0.04em;
+
+  overflow-wrap: break-word;
 }
 
 .section-heading > p:not(.eyebrow) {
@@ -918,6 +1161,14 @@ a {
   font-weight: 700;
 
   box-shadow: 0 10px 28px rgba(190, 10, 35, 0.22);
+
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.card:hover .number {
+  transform: rotate(-8deg) scale(1.08);
+
+  box-shadow: 0 14px 34px rgba(220, 15, 40, 0.35);
 }
 
 .card h3 {
@@ -1024,6 +1275,20 @@ a {
   font-size: 0.72rem;
 
   font-weight: 700;
+
+  transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+}
+
+.feature:hover .feature-icon {
+  transform: scale(1.12) rotate(6deg);
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 20, 45, 0.28),
+    rgba(255, 80, 20, 0.12)
+  );
+
+  color: #ffab97;
 }
 
 .feature h3 {
@@ -1082,13 +1347,46 @@ a {
 }
 
 .security-item {
-  padding: 22px 0;
+  position: relative;
+
+  padding: 22px 0 22px 0;
 
   border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+  transition: padding-left 0.3s ease;
 }
 
 .security-item:first-of-type {
   border-top: 0;
+}
+
+.security-item::before {
+  content: "";
+
+  position: absolute;
+
+  left: -18px;
+  top: 22px;
+  bottom: 22px;
+
+  width: 3px;
+
+  border-radius: 3px;
+
+  background: linear-gradient(180deg, #ff1838, #ff5722);
+
+  transform: scaleY(0);
+  transform-origin: top;
+
+  transition: transform 0.3s ease;
+}
+
+.security-item:hover {
+  padding-left: 10px;
+}
+
+.security-item:hover::before {
+  transform: scaleY(1);
 }
 
 .security-item h4 {
@@ -1239,6 +1537,14 @@ a {
     background 0.25s ease;
 }
 
+.faq summary:hover::after {
+  border-color: rgba(255, 90, 70, 0.3);
+
+  background: rgba(255, 30, 45, 0.13);
+
+  transform: rotate(90deg);
+}
+
 .faq details[open] summary::after {
   transform: rotate(45deg);
 
@@ -1326,6 +1632,8 @@ a {
   line-height: 1.12;
 
   letter-spacing: -0.04em;
+
+  overflow-wrap: break-word;
 }
 
 .contact-box > p:not(.eyebrow) {
@@ -1368,6 +1676,7 @@ a {
   gap: 15px;
 
   padding: 30px 0 45px;
+  padding-bottom: max(45px, env(safe-area-inset-bottom));
 
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 
@@ -1381,6 +1690,8 @@ a {
 }
 
 .rodape a {
+  position: relative;
+
   color: #ff7058;
 
   text-decoration: none;
@@ -1388,8 +1699,28 @@ a {
   transition: color 0.2s ease;
 }
 
+.rodape a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  right: 100%;
+  bottom: -2px;
+
+  height: 1px;
+
+  background: currentColor;
+
+  transition: right 0.25s ease;
+}
+
 .rodape a:hover {
   color: white;
+}
+
+.rodape a:hover::after {
+  right: 0;
 }
 
 /* =========================================================
@@ -1397,8 +1728,51 @@ a {
    ========================================================= */
 
 @media (max-width: 1000px) {
+  .menu-btn {
+    display: flex;
+  }
+
   .nav ul {
-    display: none;
+    position: absolute;
+
+    top: calc(100% + 10px);
+    left: 0;
+    right: 0;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 2px;
+
+    margin: 0;
+    padding: 10px;
+
+    background: rgba(6, 5, 6, 0.96);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+
+    box-shadow: 0 18px 55px rgba(0, 0, 0, 0.55);
+
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  }
+
+  .nav ul a {
+    padding: 13px 16px;
+  }
+
+  .menu-toggle:checked ~ ul {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
   }
 
   .hero {
@@ -1451,6 +1825,10 @@ a {
    ========================================================= */
 
 @media (max-width: 600px) {
+  html {
+    scroll-padding-top: 84px;
+  }
+
   .nav {
     width: calc(100% - 20px);
   }
@@ -1495,6 +1873,10 @@ a {
     border-radius: 24px;
   }
 
+  .demo-head {
+    font-size: 0.68rem;
+  }
+
   .metrics {
     gap: 7px;
   }
@@ -1517,10 +1899,16 @@ a {
 
   .feature {
     padding: 22px;
+
+    gap: 14px;
   }
 
   .security-box {
     padding: 24px;
+  }
+
+  .security-summary {
+    padding: 16px 18px;
   }
 
   .faq summary {
@@ -1539,6 +1927,44 @@ a {
 
   .rodape {
     width: calc(100% - 24px);
+
+    flex-direction: column;
+
+    text-align: center;
+  }
+}
+
+/* =========================================================
+   RESPONSIVO — CELULAR PEQUENO
+   ========================================================= */
+
+@media (max-width: 380px) {
+  .marca span {
+    display: none;
+  }
+
+  .nav {
+    gap: 10px;
+
+    padding: 8px 8px 8px 12px;
+  }
+
+  .nav .btn-mini {
+    padding-inline: 11px;
+
+    font-size: 0.8rem;
+  }
+
+  .hero h1 {
+    letter-spacing: -0.03em;
+  }
+
+  .metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .metrics strong {
+    font-size: 1.3rem;
   }
 }
 
